@@ -11,8 +11,6 @@ import java.util.List;
 public class DAO {
 
 
-    private Connection connection;
-
     public static List<Payment> findAll (Connection connection, String query) {
 
         List<Payment> payments = new ArrayList<>();
@@ -21,8 +19,8 @@ public class DAO {
             ResultSet resultRozliczone = preparedRozliczone.executeQuery();
             while(resultRozliczone.next()){
                 Payment payment = new Payment(
-                        resultRozliczone.getString("nzf_NumerPelny"),
-                        resultRozliczone.getFloat("nzf_WartoscWaluta")
+                        resultRozliczone.getString("NumerPelny"),
+                        resultRozliczone.getFloat("WartoscWaluta")
                 );
                 payments.add(payment);
             }
@@ -41,7 +39,7 @@ public class DAO {
         try(PreparedStatement preparedStatement = connection.prepareStatement(query)){
 
 
-            recordCount = preparedStatement.executeUpdate(query);
+            recordCount = preparedStatement.executeUpdate();
 
         }catch (SQLException e){
             e.printStackTrace();
