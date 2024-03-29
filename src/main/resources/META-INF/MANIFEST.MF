@@ -1,0 +1,5 @@
+Manifest-Version: 1.0
+Main-Class: BLinvoiceSyncMain
+Class-Path: log4j-api-2.23.1.jar mssql-jdbc-12.6.1.jre11.jar log4j-core-
+ 2.23.1.jar
+

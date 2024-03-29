@@ -1,16 +1,34 @@
+import lombok.Getter;
+
 import java.sql.Connection;
 
 import java.sql.DriverManager;
 
 import java.sql.SQLException;
+@Getter
 
 public class DBUtil {
 
-    private static final String JDBC_URL = "jdbc:sqlserver://10.221.132.148\\SQLEXPRESS;database=Kopia_Leduvel;encrypt=true;trustServerCertificate=true";
-    private static final String USER = "raf";
-    private static final String PASSWORD = "l3e.%TGB12!";
+    private String JDBC_URL;
+    private String USER;
+    private String PASSWORD;
 
-    public static Connection getConnection() throws SQLException {
+
+    public DBUtil(String JDBC_URL, String USER, String PASSWORD) {
+        this.JDBC_URL = JDBC_URL;
+        this.USER = USER;
+        this.PASSWORD = PASSWORD;
+    }
+
+    public static DBUtil configBuilder(Configuration configuration){
+        return  new DBUtil(
+                configuration.getUrl().trim(),
+                configuration.getLogin().trim(),
+                configuration.getPassword().trim()
+        );
+    }
+
+    public Connection getConnection() throws SQLException {
         return DriverManager.getConnection(JDBC_URL, USER, PASSWORD);
     }
 

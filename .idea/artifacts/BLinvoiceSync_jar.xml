@@ -1,0 +1,13 @@
+<component name="ArtifactManager">
+  <artifact name="BLinvoiceSync:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/BLinvoiceSync_jar</output-path>
+    <root id="root">
+      <element id="archive" name="BLinvoiceSync.jar">
+        <element id="module-output" name="BLinvoiceSync" />
+      </element>
+      <element id="library" level="project" name="Maven: org.apache.logging.log4j:log4j-api:2.23.1" />
+      <element id="library" level="project" name="Maven: com.microsoft.sqlserver:mssql-jdbc:12.6.1.jre11" />
+      <element id="library" level="project" name="Maven: org.apache.logging.log4j:log4j-core:2.23.1" />
+    </root>
+  </artifact>
+</component>
