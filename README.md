@@ -1,4 +1,4 @@
-#Opis:
+# Opis:
 aplikacja służy do wysyłania danych o opłaconych(lub częściowo opłaconych) transakcjach z systemu ERP Subiekt GT do systemu Baselinker. Gdy aplikacja jest uruchomiona w interwałach pięciominutorych przeszukuje bazę danych Subiekta GT w poszukiwaniu należności z ostatnich 60 dni, w których zarejestrowano jakąkolwiek wpłatę, następnie porównuje otrzymany zbiór rekordów z rekordami
 zapisanymi w tabeli pomocniczej. Jeśli odnajduje różnice przetwarza nowe płatności i aktualizuje je poprzez API systemu Baselinker.
 #Instalacja:
