@@ -4,8 +4,8 @@ zapisanymi w tabeli pomocniczej. Jeśli odnajduje różnice przetwarza nowe pła
 # Instalacja:
 Aktualna wersja aplikacji wymaga następujących kroków:
 1. Stworzenie w bazie danych Subiekta GT tabeli o nazwie <dbo.__ledu.PaidInvoices> i następującej strukturze:
-+---------------------------+--------------+------+-----+---------+----------------+
-| Field                     | Type         | Null | Key | Default | Extra          |
+# +---------------------------+--------------+------+-----+---------+----------------+
+# | Field                     | Type         | Null | Key | Default | Extra          |
 +---------------------------+--------------+------+-----+---------+----------------+
 | id                        | int          | NO   | PRI | NULL    | auto_increment |
 | nzf_NumerPelny            | varchar(50)  | NO   |     | NULL    |                |
