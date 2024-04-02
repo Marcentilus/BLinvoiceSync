@@ -4,17 +4,17 @@ zapisanymi w tabeli pomocniczej. Jeśli odnajduje różnice przetwarza nowe pła
 # Instalacja:
 Aktualna wersja aplikacji wymaga następujących kroków:
 Stworzenie w bazie danych Subiekta GT tabeli o nazwie <dbo.__ledu.PaidInvoices> i następującej strukturze:
-# +---------------------------+--------------+------+-----+---------+----------------+
-# | Field                     | Type         | Null | Key | Default | Extra          |
-# +---------------------------+--------------+------+-----+---------+----------------+
-# | id                        | int          | NO   | PRI | NULL    | auto_increment |
-# | nzf_NumerPelny            | varchar(50)  | NO   |     | NULL    |                |
-# | nzf_BLID                  | varchar(50)  | NO   |     | NULL    |                |
-# | nzf_WartoscWaluta         | money        | NO   |     | NULL    |                |
-# | nzf_WartoscWalutaPierwotna| money        | NO   |     | NULL    |                |
-# | nzf_Data                  | datetime     | NO   |     | NULL    |                |
-# | nzf_Updated               | bit          | NO   |     | NULL    |                |
-# +------------------+--------------+------+-----+---------+-------------------------+
++---------------------------+--------------+------+-----+---------+----------------+
+| Field                     | Type         | Null | Key | Default | Extra          |
++---------------------------+--------------+------+-----+---------+----------------+
+| id                        | int          | NO   | PRI | NULL    | auto_increment |
+| nzf_NumerPelny            | varchar(50)  | NO   |     | NULL    |                |
+| nzf_BLID                  | varchar(50)  | NO   |     | NULL    |                |
+| nzf_WartoscWaluta         | money        | NO   |     | NULL    |                |
+| nzf_WartoscWalutaPierwotna| money        | NO   |     | NULL    |                |
+| nzf_Data                  | datetime     | NO   |     | NULL    |                |
+| nzf_Updated               | bit          | NO   |     | NULL    |                |
++------------------+--------------+------+-----+---------+-------------------------+
 
 1. Po skompilowaniu projektu, trzeba przenieść pliki jar z folderu repozytorium, do folderu o ścieżce: C:\BLinvoiceSync
 2. Utworzyć w folderze aplikacji podfolder o nazwie logs
