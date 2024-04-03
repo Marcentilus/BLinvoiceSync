@@ -19,6 +19,21 @@ Aktualna wersja aplikacji wymaga następujących kroków:
 
 2. Po skompilowaniu projektu, trzeba przenieść pliki jar z folderu repozytorium, do folderu o ścieżce: C:\BLinvoiceSync
 3. Utworzyć w folderze aplikacji podfolder o nazwie logs
-4. Po uruchomieniu pliku jar BLinvoiceSync aplikacja będzie już działać, ale lepiej stworzyć usługę w systemie Windows, która będzie ją obsługiwać - w tym celu polecam skorzystać z wrappera WinSW, pliki oraz instrukcje można znaleźć tutaj: https://github.com/winsw/winsw. Aplikacja nie była robiona z myślą o pracy na systemie Linux, ale powinna również na nim działać.
+4. Utworzyć w folderze aplikacji plik `config.xml`, w którym będą zapisane dane dostępowe do bazy danych i API. Przykładowy plik może wyglądać tak:
+   <?xml version="1.0" encoding="UTF-8"?>
+   ```
+   <Configuration>
+   <database>
+    <url>
+    jdbc:sqlserver://ADRES_BAZY;database=MOJA_BAZA;encrypt=true;trustServerCertificate=true
+    </url>
+    <login>MÓJ_LOGIN</login>
+    <password>MY_PASSWORD</password>
+   </database>
+   <api>
+    <token>MY_TOKEN</token>
+   </api>
+   </Configuration>
+5. Po uruchomieniu pliku jar BLinvoiceSync aplikacja będzie już działać, ale lepiej stworzyć usługę w systemie Windows, która będzie ją obsługiwać - w tym celu polecam skorzystać z wrappera WinSW, pliki oraz instrukcje można znaleźć tutaj: https://github.com/winsw/winsw. Aplikacja nie była robiona z myślą o pracy na systemie Linux, ale powinna również na nim działać.
 
 Aplikacja wymaga zainstalowanej Javy w wersji 21
