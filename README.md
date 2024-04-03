@@ -1,4 +1,4 @@
-# Opis:
+# Description:
 The application is used to send data about paid (or partially paid) transactions from the ERP system Subiekt GT to the Baselinker system. When the application is running, it searches the Subiekt GT database at five-minute intervals for receivables from the last 60 days where any payment has been registered. It then compares the retrieved set of records with records stored in the auxiliary table. If it finds differences, it processes new payments and updates them through the Baselinker system's API.
 
 For the application to function correctly, it requires passing the Baselinker order ID to the `Remarks` field in the FS documents in Subiekt GT. The ID should be passed in the following format: `BLID:<order_id>;` so that the parser can locate it among other data that often ends up in this field. This will likely require additional configuration of the application used to retrieve orders.
