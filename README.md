@@ -1,9 +1,12 @@
 # Opis:
-Aplikacja służy do wysyłania danych o opłaconych (lub częściowo opłaconych) transakcjach z systemu ERP Subiekt GT do systemu Baselinker. Gdy aplikacja jest uruchomiona przeszukuje, w interwałach pięciominutowych, bazę danych Subiekta GT w poszukiwaniu należności z ostatnich 60 dni, w których zarejestrowano jakąkolwiek wpłatę, następnie porównuje otrzymany zbiór rekordów z rekordami
-zapisanymi w tabeli pomocniczej. Jeśli odnajduje różnice przetwarza nowe płatności i aktualizuje je poprzez API systemu Baselinker. Aplikacja do poprawnego działania wymaga przekazywania do pola `Uwagi`, w dokumentach FS w Subiekcie GT, id zamówienia z systemu Baselinker. Id powinno być przekazane w następującej postaci: `BLID:<order_id>;`, żeby parser mógł je odnaleźć pośród innych danych, które często trafiają do tego pola. Prawdopodobnie będzie to wymagać dodatkowej konfigiracji aplikacji używanej do pobierania zamówień.
-# Instalacja:
-Aktualna wersja aplikacji wymaga następujących kroków:
-1. Stworzenie w bazie danych Subiekta GT tabeli o nazwie `dbo.__ledu.PaidInvoices` o następującej strukturze:
+The application is used to send data about paid (or partially paid) transactions from the ERP system Subiekt GT to the Baselinker system. When the application is running, it searches the Subiekt GT database at five-minute intervals for receivables from the last 60 days where any payment has been registered. It then compares the retrieved set of records with records stored in the auxiliary table. If it finds differences, it processes new payments and updates them through the Baselinker system's API.
+
+For the application to function correctly, it requires passing the Baselinker order ID to the Remarks field in the FS documents in Subiekt GT. The ID should be passed in the following format: BLID:<order_id>; so that the parser can locate it among other data that often ends up in this field. This will likely require additional configuration of the application used to retrieve orders.
+Installation:
+
+The current version of the application requires the following steps:
+
+1. Creating a table in the Subiekt GT database named dbo.__ledu.PaidInvoices with the following structure:
 
 | Field | Type | Null | Key | Default | Extra |
 |---|---|---|---|---|---|
@@ -17,23 +20,25 @@ Aktualna wersja aplikacji wymaga następujących kroków:
 
 
 
-2. Po skompilowaniu projektu, trzeba przenieść pliki jar z folderu repozytorium, do folderu o ścieżce: C:\BLinvoiceSync
-3. Utworzyć w folderze aplikacji podfolder o nazwie logs
-4. Utworzyć w folderze aplikacji plik `config.xml`, w którym będą zapisane dane dostępowe do bazy danych i API. Przykładowy plik może wyglądać tak:
+2. After compiling move the jar files from the repository folder to the following folder C:\BLinvoiceSync
+3. Create a subflder in the main application falder and name it "logs"
+4. Create a file `config.xml` in the main application folder, where all the authorization data will be stored. Example file might look like this:
+ ```
    <?xml version="1.0" encoding="UTF-8"?>
-   ```
    <Configuration>
    <database>
     <url>
-    jdbc:sqlserver://ADRES_BAZY;database=MOJA_BAZA;encrypt=true;trustServerCertificate=true
+    jdbc:sqlserver://DB_ADDRESS;database=MY_DB;encrypt=true;trustServerCertificate=true
     </url>
-    <login>MÓJ_LOGIN</login>
+    <login>MY_LOGIN</login>
     <password>MY_PASSWORD</password>
    </database>
    <api>
     <token>MY_TOKEN</token>
    </api>
    </Configuration>
-5. Po uruchomieniu pliku jar BLinvoiceSync aplikacja będzie już działać, ale lepiej stworzyć usługę w systemie Windows, która będzie ją obsługiwać - w tym celu polecam skorzystać z wrappera WinSW, pliki oraz instrukcje można znaleźć tutaj: https://github.com/winsw/winsw. Aplikacja nie była robiona z myślą o pracy na systemie Linux, ale powinna również na nim działać.
+```
+6. After launching the BLinvoiceSync.jar file the application should already work, however it is better to create a new Windows service that will handle the application life cycle. To achieve that I recommend using a wrapper, like WinSW - you can find required files and instruction how to use it here ttps://github.com/winsw/winsw
+This application was not meant to be used on Linux operating system, however to my knowledge it should still work fine on Linux.
 
-Aplikacja wymaga zainstalowanej Javy w wersji 21
+The project uses JDK 21
