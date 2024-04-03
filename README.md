@@ -1,6 +1,6 @@
 # Opis:
 Aplikacja służy do wysyłania danych o opłaconych (lub częściowo opłaconych) transakcjach z systemu ERP Subiekt GT do systemu Baselinker. Gdy aplikacja jest uruchomiona przeszukuje, w interwałach pięciominutowych, bazę danych Subiekta GT w poszukiwaniu należności z ostatnich 60 dni, w których zarejestrowano jakąkolwiek wpłatę, następnie porównuje otrzymany zbiór rekordów z rekordami
-zapisanymi w tabeli pomocniczej. Jeśli odnajduje różnice przetwarza nowe płatności i aktualizuje je poprzez API systemu Baselinker.
+zapisanymi w tabeli pomocniczej. Jeśli odnajduje różnice przetwarza nowe płatności i aktualizuje je poprzez API systemu Baselinker. Aplikacja do poprawnego działania wymaga przekazywania do pola `Uwagi`, w dokumentach FS w Subiekcie GT, id zamówienia z systemu Baselinker. Id powinno być przekazane w następującej postaci: `BLID:<order_id>;`, żeby parser mógł je odnaleźć pośród innych danych, które często trafiają do tego pola. Prawdopodobnie będzie to wymagać dodatkowej konfigiracji aplikacji używanej do pobierania zamówień.
 # Instalacja:
 Aktualna wersja aplikacji wymaga następujących kroków:
 1. Stworzenie w bazie danych Subiekta GT tabeli o nazwie `dbo.__ledu.PaidInvoices` o następującej strukturze:
